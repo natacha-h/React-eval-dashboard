@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom'
 
 // == Import: local
 import './navigation.scss';
@@ -10,29 +11,23 @@ import './navigation.scss';
 const Navigation = ({handleClick}) => (
     <nav>
         <Menu>
-            <Menu.Item
-                name='home'
-                // active={activeItem === 'home'}
-                onClick={handleClick('home')}
-           >
-             Home
-            </Menu.Item>
+            <NavLink to='/home'>
+                <Menu.Item
+                    // name='home'
+                    // // active={activeItem === 'home'}
+                    // onClick={handleClick('home')}
+                >
+                Home
+                </Menu.Item>       
+            </NavLink>
     
-            <Menu.Item
-                name='search'
-                // active={activeItem === 'search'}
-                onClick={handleClick('search')}
-            >
-                Search
-            </Menu.Item>
-    
-            <Menu.Item
-                name='About'
-                // active={activeItem === 'About'}
-                onClick={handleClick('about')}
-            >
-                About
-            </Menu.Item>
+            <NavLink to='/search'>
+                <Menu.Item>Search</Menu.Item>
+            </NavLink>
+
+            <NavLink to='/about'>
+                <Menu.Item>About</Menu.Item>
+            </NavLink>
         </Menu>
     </nav>
 

@@ -6,12 +6,12 @@ import { Input } from 'semantic-ui-react';
 // == Import: local
 
 // == Composant
-const Search = ( {value, loading, onInputChange, onSearchSubmit } ) => {
+const Search = ( {value, loading, onInputChange, onSubmitSearch } ) => {
 
     const handleSubmit = evt => {
       evt.preventDefault();
       console.log('Submit pour la valeur', value);
-      onSearchSubmit();
+      onSubmitSearch();
     }
   
     const handleInputChange = evt => {
@@ -33,6 +33,7 @@ const Search = ( {value, loading, onInputChange, onSearchSubmit } ) => {
         </form>
         
       </div>
+
     );
   }
 

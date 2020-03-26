@@ -11,7 +11,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 // == Render
 // 1. Le composant racine (celui qui contient l'ensemble de l'app)
-const rootComponent = <Provider store={store}><Router><App /></Router></Provider>;
+const rootComponent = /*<Provider store={store}>*/<Router><App /></Router>/*</Provider>*/;
 
 // 2. La cible du DOM (là où la structure doit prendre vie dans le DOM)
 const target = document.getElementById('root');
