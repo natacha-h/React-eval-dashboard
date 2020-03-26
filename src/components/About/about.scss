@@ -1,0 +1,11 @@
+#about{
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+
+    &-text{
+        flex: 1;
+        text-align: left;
+        margin-left: 2em;
+    }
+}
