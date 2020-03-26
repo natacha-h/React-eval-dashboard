@@ -1,7 +1,7 @@
 // == Import : npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
 // == Import : local
@@ -19,7 +19,7 @@ class App extends React.Component {
     view: 'search',
     value: '',
     results: [],
-    laoding: false,
+    loading: false,
     files: [],
   }
 
