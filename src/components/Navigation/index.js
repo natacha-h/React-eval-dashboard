@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Menu } from 'semantic-ui-react';
 
 // == Import: local
+import './navigation.scss';
 
 // == Composant
 const Navigation = ({handleClick}) => (

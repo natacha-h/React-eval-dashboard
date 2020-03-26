@@ -8,7 +8,7 @@ import './app.scss';
 // composants
 import Navigation from 'src/components/Navigation';
 import About from 'src/components/About';
-
+import Search from 'src/components/Search';
 // == Composant
 
 class App extends React.Component {
@@ -37,7 +37,18 @@ class App extends React.Component {
         </header>
        
         <main>
-          <About/>
+          {
+            view === 'about' && <About/>
+          }
+          {
+            view === 'home' && 
+            <div>Salut, ici c'est la home !</div>
+          }
+          {
+            view === 'search' && <Search />
+            
+          }
+          
         </main>
       </div>
     );
