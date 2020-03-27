@@ -7,14 +7,14 @@ import {Card, Button, ButtonGroup } from 'semantic-ui-react';
 import DisplayCard from './DisplayCard';
 
 // == Composant
-const ReposResults = ( {results, onRepoClick}) => {
+const ReposResults = ( { results }) => {
 
   return (
     <div id="results">  
       <Card.Group>
         {results.map(result => 
           <DisplayCard
-            onRepoClick={onRepoClick}
+            // onRepoClick={onRepoClick}
             key={result.id}         
             {...result}
           />           
@@ -27,7 +27,7 @@ const ReposResults = ( {results, onRepoClick}) => {
 // == Validation props
 ReposResults.proptypes = {
   results: PropTypes.array.isRequired,
-  onRepoClick: PropTypes.func.isRequired,
+  // onRepoClick: PropTypes.func.isRequired,
 }
 
 // == Export
