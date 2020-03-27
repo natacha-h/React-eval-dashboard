@@ -11,6 +11,7 @@ import Navigation from 'src/components/Navigation';
 import About from 'src/components/About';
 import Search from 'src/containers/Search';
 import ReposResults from 'src/containers/RepoResults';
+import RepoFilesList from 'src/containers/RepoFilesList';
 // == Composant
 
 class App extends React.Component {
@@ -68,10 +69,19 @@ class App extends React.Component {
   //   })
   // }
 
-  hasResults = () => {
-    const {results} = this.props;
-    if (results) return <ReposResults/>
+  // hasResults = () => {
+  //   const {results} = this.props;
+  //   if (results) return <ReposResults/>
+  // }
 
+  changeView = () => {
+    const { view } = this.props;
+    if (view === "repos") {
+      return <ReposResults/>
+    }
+    if (view === "files") {
+      return <RepoFilesList/>
+    }
 
   }
 
@@ -105,7 +115,7 @@ class App extends React.Component {
           </Switch>
           
           {        
-            this.hasResults()
+            this.changeView()
           }        
         </main>
       </div>

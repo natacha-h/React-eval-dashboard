@@ -6,7 +6,7 @@ import {Card} from 'semantic-ui-react';
 // == Import: local
 
 // == Composant
-const DisplayCard = ( { name, image, author, description, repoUrl, onRepoClick }) => {
+const DisplayCard = ( { name, image, author, description, onRepoClick }) => {
   
     return (  
       <Card
@@ -25,7 +25,6 @@ DisplayCard.proptypes = {
     image: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     description: PropTypes.string,
-    repoUrl: PropTypes.string.isRequired,
     onRepoClick: PropTypes.func.isRequired,
   
   }

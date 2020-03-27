@@ -7,7 +7,7 @@ import {Table, Icon, Button } from 'semantic-ui-react';
 // == Import: local
 
 // == Composant
-const RepoFilesList = ( {files, onBackClick} ) => (
+const RepoFilesList = ( {files} ) => (
 
     <Table celled striped>
     <Table.Header>
@@ -15,7 +15,7 @@ const RepoFilesList = ( {files, onBackClick} ) => (
         <Table.HeaderCell colSpan='3'>
             <Button 
                 content='Retour aux résultats' 
-                onClick={onBackClick}
+                // onClick={onBackClick}
             />
             Git Repository
         </Table.HeaderCell>
@@ -25,7 +25,7 @@ const RepoFilesList = ( {files, onBackClick} ) => (
     <Table.Body>
         {
             files.map(({name, type}) => (
-                <Table.Row>
+                <Table.Row key={name}>
                     <Table.Cell collapsing>
                     <Icon name={ type === 'file'? 'file outline' : 'folder'} /> {name}
                     </Table.Cell>     
@@ -44,7 +44,7 @@ RepoFilesList.proptypes = {
             type: PropTypes.string.isRequired,
         }).isRequired
     ).isRequired,
-    onBackClick: PropTypes.func.isRequired,
+    // onBackClick: PropTypes.func.isRequired,
 }
 
 

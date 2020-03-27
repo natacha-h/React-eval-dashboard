@@ -40,6 +40,7 @@ const reducer = (state = initialState, action = {}) => {
           ...state,
           files: [...action.files],
           loading: false,
+          view: 'files',
         }
       }
     default:
@@ -68,7 +69,7 @@ export const receiveResults = results => ({
 })
 
 export const receiveFiles = files => ({
-  type: RECEIVE_RESULTS,
+  type: RECEIVE_FILES,
   files,
 })
 // Selectors
@@ -84,8 +85,8 @@ export const formatResults = state => state.results.map(result => ({
 }));
 
 // - Pour l'affichage du contenu d'un Repo
-export const formatRepoFiles = results => {
-  const formattedFiles = results.map(file => ({
+export const formatRepoFiles = state =>  {
+  const formattedFiles = state.files.map(file => ({
     name: file.name,
     type: file.type
   }));
@@ -94,7 +95,8 @@ export const formatRepoFiles = results => {
   //Je récupère uniquement les fichiers
   const onlyFiles = formattedFiles.filter(currentFile => (currentFile.type === 'file'));
   // je met tout ça dans l'ordre
-   return orderedFiles = [ ...onlyFolders, ...onlyFiles];
+  const orderedFiles = [ ...onlyFolders, ...onlyFiles];
+   return orderedFiles;
 }
 
 export default reducer;

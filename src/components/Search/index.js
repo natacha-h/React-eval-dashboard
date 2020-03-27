@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Input, Form } from 'semantic-ui-react';
 
 // == Import: local
+import './search.scss';
 
 // == Composant
 class Search extends React.Component {
@@ -11,7 +12,6 @@ class Search extends React.Component {
   handleSubmit = evt => {
     evt.preventDefault();
     const { onSubmitSearch } = this.props;
-    // console.log('Submit pour la valeur', value);
     onSubmitSearch();
   }
   
@@ -42,10 +42,6 @@ class Search extends React.Component {
     );
   }
 }
-// const Search = () => {
-
-  
-//   }
 
 // == Validation props
 Search.propTypes = {
