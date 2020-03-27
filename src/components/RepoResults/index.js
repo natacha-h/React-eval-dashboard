@@ -1,10 +1,10 @@
 // == Import: npm
 import React from 'react';
 import PropTypes from "prop-types";
-import {Card, Button, ButtonGroup } from 'semantic-ui-react';
+import {Card } from 'semantic-ui-react';
 
 // == Import: local
-import DisplayCard from './DisplayCard';
+import DisplayCard from 'src/containers/DisplayCard';
 
 // == Composant
 const ReposResults = ( { results }) => {
@@ -14,7 +14,6 @@ const ReposResults = ( { results }) => {
       <Card.Group>
         {results.map(result => 
           <DisplayCard
-            // onRepoClick={onRepoClick}
             key={result.id}         
             {...result}
           />           
@@ -27,7 +26,6 @@ const ReposResults = ( { results }) => {
 // == Validation props
 ReposResults.proptypes = {
   results: PropTypes.array.isRequired,
-  // onRepoClick: PropTypes.func.isRequired,
 }
 
 // == Export

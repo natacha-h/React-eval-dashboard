@@ -11,6 +11,7 @@ const CHANGE_INPUT = 'CHANGE_INPUT';
 export const SEARCH_REPOS = 'SEARCH_REPOS';
 const RECEIVE_RESULTS = 'RECEIVE_RESULTS';
 export const FIND_ONE_REPO = 'FIND_ONE_REPO';
+const RECEIVE_FILES = 'RECEIVE_FILES';
 
 // Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -20,10 +21,25 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         value: action.value,
       };
+      case FIND_ONE_REPO:
+      case SEARCH_REPOS: {
+        return {
+          ...state,
+          loading: true,
+        }
+      }
       case RECEIVE_RESULTS: {
         return {
           ...state,
           results: [...action.results],
+          loading: false,
+        }
+      };
+      case RECEIVE_FILES: {
+        return {
+          ...state,
+          files: [...action.files],
+          loading: false,
         }
       }
     default:
@@ -43,6 +59,7 @@ export const searchRepos = () => ({
 
 export const findOneRepo = url => ({
   type: FIND_ONE_REPO,
+  url,
 })
 
 export const receiveResults = results => ({
@@ -50,6 +67,10 @@ export const receiveResults = results => ({
   results,
 })
 
+export const receiveFiles = files => ({
+  type: RECEIVE_RESULTS,
+  files,
+})
 // Selectors
 // Mise en forme des résultats :
 // - Pour le résultat de la recherche
@@ -63,6 +84,17 @@ export const formatResults = state => state.results.map(result => ({
 }));
 
 // - Pour l'affichage du contenu d'un Repo
-// export const formatRepoFiles 
+export const formatRepoFiles = results => {
+  const formattedFiles = results.map(file => ({
+    name: file.name,
+    type: file.type
+  }));
+  // Je récupère uniquement les dossiers
+  const onlyFolders = formattedFiles.filter(currentFile => (currentFile.type === 'dir'));
+  //Je récupère uniquement les fichiers
+  const onlyFiles = formattedFiles.filter(currentFile => (currentFile.type === 'file'));
+  // je met tout ça dans l'ordre
+   return orderedFiles = [ ...onlyFolders, ...onlyFiles];
+}
 
 export default reducer;

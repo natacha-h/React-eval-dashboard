@@ -1,8 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import AjaxMiddleware from './AjaxMiddleware';
+import OneRepoMiddleware from './OneRepoMiddleware';
 import reducer from './reducer';
 
-const middlewares = applyMiddleware(AjaxMiddleware);
+const middlewares = applyMiddleware(AjaxMiddleware, OneRepoMiddleware);
 
 // eslint-disable-next-line no-underscore-dangle
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
