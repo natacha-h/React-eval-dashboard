@@ -8,10 +8,10 @@ import { NavLink } from 'react-router-dom'
 import './navigation.scss';
 
 // == Composant
-const Navigation = ({handleClick}) => (
+const Navigation = () => (
     <nav>
         <Menu>
-            <NavLink to='/home'>
+            <NavLink to='/'>
                 <Menu.Item
                     // name='home'
                     // // active={activeItem === 'home'}
@@ -34,9 +34,9 @@ const Navigation = ({handleClick}) => (
 )
 
 // == Validation props
-Navigation.propTypes = {
-    handleClick: PropTypes.func.isRequired
-}
+// Navigation.propTypes = {
+//     handleClick: PropTypes.func.isRequired
+// }
 
 // == Export
 export default Navigation;

@@ -17,8 +17,14 @@ const reducer = (state = initialState, action = {}) => {
     case CHANGE_INPUT:
       return {
         ...state,
-        value,
+        value: action.value,
       };
+      case RECEIVE_RESULTS: {
+        return {
+          ...state,
+          results: [...action.results],
+        }
+      }
     default:
       return state;
   }
@@ -32,7 +38,7 @@ export const changeInput = value => ({
 
 export const searchRepos = () => ({
   type: SEARCH_REPOS,
-  value: state.value,
+  // value: state.value,
 });
 
 export const receiveResults = results => ({

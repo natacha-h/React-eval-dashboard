@@ -6,7 +6,9 @@ const AjaxMiddleware = store => next => (action) => {
     switch (action.type) {
       case SEARCH_REPOS:{
         //je récupère la valeur de l'input
-        const value = action.value
+        const value = store.getState().value;
+        // petite vérification
+        console.log('Je suis AjaxMiddleware et je lance une recherche pour la valeur ', value);
          axios.get(`https://api.github.com/search/repositories?q=${value}`) // template string = pas besoin de concaténer :D
            .then((response) => {
             const results= response.data.items;
@@ -20,6 +22,7 @@ const AjaxMiddleware = store => next => (action) => {
                 repoUrl: `${result.url}/contents`, 
             }));
             // Je renvoie les données reçue au state
+            console.log(formattedResults);
             store.dispatch(receiveResults(formattedResults));
     })
            .catch()
