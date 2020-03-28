@@ -9,6 +9,7 @@ import { formatRepoFiles } from 'src/store/reducer';
 // == Données qui sont dans le State
 const mapStateToProps = state => ({
     files: formatRepoFiles(state),
+    name: state.repoName,
 });
 
 // == Actions : tout ce qui sera dispatché pour modifier le state

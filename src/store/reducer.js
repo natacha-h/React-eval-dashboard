@@ -4,6 +4,8 @@ const initialState = {
   loading: false,
   files: [],
   view: 'repos',
+  repoName: '',
+  repoUrl: '',
 };
 
 // Types
@@ -21,7 +23,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         value: action.value,
       };
-      case FIND_ONE_REPO:
       case SEARCH_REPOS: {
         return {
           ...state,
@@ -35,6 +36,14 @@ const reducer = (state = initialState, action = {}) => {
           loading: false,
         }
       };
+      case FIND_ONE_REPO:{
+        return {
+          ...state,
+          loading: true,
+          repoName: action.name,
+          repoUrl: action.url,
+        }
+      }
       case RECEIVE_FILES: {
         return {
           ...state,
@@ -58,9 +67,10 @@ export const searchRepos = () => ({
   type: SEARCH_REPOS,
 });
 
-export const findOneRepo = url => ({
+export const findOneRepo = (url, name) => ({
   type: FIND_ONE_REPO,
   url,
+  name,
 })
 
 export const receiveResults = results => ({

@@ -12,11 +12,7 @@ const mapStateToProps = state => ({
 });
 
 // == Actions : tout ce qui sera dispatché pour modifier le state
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    onRepoClick: () => {
-        dispatch(findOneRepo(ownProps.repoUrl))
-    }
-});
+const mapDispatchToProps = {};
 
 // Container
 const  RepoResultsContainer = connect(mapStateToProps, mapDispatchToProps)(RepoResults);
