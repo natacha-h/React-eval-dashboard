@@ -6,6 +6,8 @@ const initialState = {
   view: 'repos',
   repoName: '',
   repoUrl: '',
+  favRepos: [],
+  repoIsFav: false,
 };
 
 // Types
@@ -15,6 +17,10 @@ const RECEIVE_RESULTS = 'RECEIVE_RESULTS';
 export const FIND_ONE_REPO = 'FIND_ONE_REPO';
 const RECEIVE_FILES = 'RECEIVE_FILES';
 const BACK_TO_RESULTS = 'BACK_TO_RESULTS';
+const FAV_REPO = 'FAV_REPO';
+
+// inverser la valeur d'un booléen
+const toggle = key => !key;
 
 // Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -59,6 +65,13 @@ const reducer = (state = initialState, action = {}) => {
           view: 'repos',
         }
       }
+      case FAV_REPO: {
+        return {
+          ...state,
+          favRepos: [...state.favRepos, state.repoUrl],
+          repoIsFav: true,
+        }
+      }
     default:
       return state;
   }
@@ -94,6 +107,9 @@ export const backToResults = () => ({
   type: BACK_TO_RESULTS,
 })
 
+export const favRepo = () => ({
+  type: FAV_REPO,
+})
 
 // Selectors
 // Mise en forme des résultats :
@@ -121,5 +137,7 @@ export const formatRepoFiles = state =>  {
   const orderedFiles = [ ...onlyFolders, ...onlyFiles];
    return orderedFiles;
 }
+
+// export const getFavStatus = state => state.favRepos.filter(url => url === state.repoUrl)
 
 export default reducer;

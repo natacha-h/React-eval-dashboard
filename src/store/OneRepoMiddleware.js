@@ -10,6 +10,7 @@ const OneRepoMiddleware = store => next => (action) => {
           .then((response) => {
           const files = response.data;
           console.log(files);
+          console.log(response);
           // Je renvoie les données reçue au state
           store.dispatch(receiveFiles(files));
           })

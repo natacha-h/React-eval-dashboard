@@ -5,35 +5,43 @@ import PropTypes from "prop-types";
 import {Table, Icon, Button } from 'semantic-ui-react';
 
 // == Import: local
+import './repoFiles.scss';
 
 // == Composant
-const RepoFilesList = ( {files, name, onBackClick} ) => (
+const RepoFilesList = ( {files, name, onBackClick, onFavClick, isFav} ) => (
 
-    <Table celled striped>
-    <Table.Header>
-      <Table.Row>
-        <Table.HeaderCell colSpan='3'>
-            {name}
-            <Button 
-                content='Retour aux résultats' 
-                onClick={onBackClick}
-            />
-        </Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
+    <div id="display-files">
+        <Button 
+            content='Retour aux résultats' 
+            onClick={onBackClick}
+        />
+        <Table celled striped>
+            <Table.Header>
+                <Table.Row>
+                    <Table.HeaderCell colSpan='3'>
+                        {name}
+                        <button id="fav-repo" onClick={onFavClick}>
+                            <Icon name={ isFav === true ? 'star': 'star outline' } />
+                        </button>
+                        
+                    </Table.HeaderCell>
+                </Table.Row>
+            </Table.Header>
 
-    <Table.Body>
-        {
-            files.map(({name, type}) => (
-                <Table.Row key={name}>
-                    <Table.Cell collapsing>
-                    <Icon name={ type === 'file'? 'file outline' : 'folder'} /> {name}
-                    </Table.Cell>     
-                </Table.Row>     
-            ))
-        }
-    </Table.Body>
-  </Table>
+            <Table.Body>
+                {
+                    files.map(({name, type}) => (
+                        <Table.Row key={name}>
+                            <Table.Cell collapsing>
+                            <Icon name={ type === 'file'? 'file outline' : 'folder'} /> {name}
+                            </Table.Cell>     
+                        </Table.Row>     
+                    ))
+                }
+            </Table.Body>
+        </Table>
+    </div>
+
 )
 
 // == Validation props
@@ -46,6 +54,8 @@ RepoFilesList.proptypes = {
     ).isRequired,
     name: PropTypes.string.isRequired,
     onBackClick: PropTypes.func.isRequired,
+    onFavClick: PropTypes.func.isRequired,
+    isFav: PropTypes.bool.isRequired,
 }
 
 
