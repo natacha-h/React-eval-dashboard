@@ -7,17 +7,17 @@ import {Table, Icon, Button } from 'semantic-ui-react';
 // == Import: local
 
 // == Composant
-const RepoFilesList = ( {files, name} ) => (
+const RepoFilesList = ( {files, name, onBackClick} ) => (
 
     <Table celled striped>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell colSpan='3'>
+            {name}
             <Button 
                 content='Retour aux résultats' 
-                // onClick={onBackClick}
+                onClick={onBackClick}
             />
-            {name}
         </Table.HeaderCell>
       </Table.Row>
     </Table.Header>
@@ -45,7 +45,7 @@ RepoFilesList.proptypes = {
         }).isRequired
     ).isRequired,
     name: PropTypes.string.isRequired,
-    // onBackClick: PropTypes.func.isRequired,
+    onBackClick: PropTypes.func.isRequired,
 }
 
 

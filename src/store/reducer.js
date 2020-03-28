@@ -14,6 +14,7 @@ export const SEARCH_REPOS = 'SEARCH_REPOS';
 const RECEIVE_RESULTS = 'RECEIVE_RESULTS';
 export const FIND_ONE_REPO = 'FIND_ONE_REPO';
 const RECEIVE_FILES = 'RECEIVE_FILES';
+const BACK_TO_RESULTS = 'BACK_TO_RESULTS';
 
 // Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -52,6 +53,12 @@ const reducer = (state = initialState, action = {}) => {
           view: 'files',
         }
       }
+      case BACK_TO_RESULTS: {
+        return {
+          ...state,
+          view: 'repos',
+        }
+      }
     default:
       return state;
   }
@@ -82,6 +89,12 @@ export const receiveFiles = files => ({
   type: RECEIVE_FILES,
   files,
 })
+
+export const backToResults = () => ({
+  type: BACK_TO_RESULTS,
+})
+
+
 // Selectors
 // Mise en forme des résultats :
 // - Pour le résultat de la recherche
