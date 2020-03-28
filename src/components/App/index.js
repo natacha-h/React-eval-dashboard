@@ -10,8 +10,7 @@ import './app.scss';
 import Navigation from 'src/components/Navigation';
 import About from 'src/components/About';
 import Search from 'src/containers/Search';
-import ReposResults from 'src/containers/RepoResults';
-import RepoFilesList from 'src/containers/RepoFilesList';
+
 // == Composant
 
 class App extends React.Component {
@@ -74,17 +73,6 @@ class App extends React.Component {
   //   if (results) return <ReposResults/>
   // }
 
-  changeView = () => {
-    const { view } = this.props;
-    if (view === "repos") {
-      return <ReposResults/>
-    }
-    if (view === "files") {
-      return <RepoFilesList/>
-    }
-
-  }
-
   render() {
 
     // const { view, value, loading } = this.state;
@@ -113,10 +101,7 @@ class App extends React.Component {
               component={About}
             />
           </Switch>
-          
-          {        
-            this.changeView()
-          }        
+                 
         </main>
       </div>
 

@@ -10,6 +10,7 @@ import { changeInput, searchRepos } from 'src/store/reducer';
 const mapStateToProps = state => ({
     value: state.value,
     loading: state.loading,
+    view: state.view,
 });
 
 // == Actions : tout ce qui sera dispatché pour modifier le state

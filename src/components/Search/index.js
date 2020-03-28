@@ -6,6 +6,9 @@ import { Input, Form } from 'semantic-ui-react';
 // == Import: local
 import './search.scss';
 
+import ReposResults from 'src/containers/RepoResults';
+import RepoFilesList from 'src/containers/RepoFilesList';
+
 // == Composant
 class Search extends React.Component {
 
@@ -21,22 +24,35 @@ class Search extends React.Component {
     onInputChange(value);
   }
 
+  changeView = () => {
+    const { view } = this.props;
+    if (view === "repos") {
+      return <ReposResults/>
+    }
+    if (view === "files") {
+      return <RepoFilesList/>
+    }
+  }
+
   render() {
     const { value, loading } = this.props;
     return (
-      <div id="search-bar">
-        <form onSubmit={this.handleSubmit}>
-           
-        <Input 
-            fluid
-            loading={loading}
-            icon="search"
-            placeholder='Chercher un repo'
-            value={value}
-            onChange={this.handleInputChange}
-        />
-        </form>
-        
+      <div>
+        <div id="search-bar">
+          <form onSubmit={this.handleSubmit}>
+            <Input 
+                fluid
+                loading={loading}
+                icon="search"
+                placeholder='Chercher un repo'
+                value={value}
+                onChange={this.handleInputChange}
+            />
+          </form>
+        </div>
+          {        
+              this.changeView()
+            }
       </div>
     
     );
