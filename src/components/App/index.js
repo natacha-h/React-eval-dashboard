@@ -10,6 +10,7 @@ import './app.scss';
 import Navigation from 'src/components/Navigation';
 import About from 'src/components/About';
 import Search from 'src/containers/Search';
+import Home from 'src/containers/Home';
 
 // == Composant
 
@@ -90,7 +91,7 @@ class App extends React.Component {
             <Route
               exact
               path='/'
-              render={() => <div>Ici ça sera la Home</div>}
+              component={Home}
             />
             <Route
               path='/search'

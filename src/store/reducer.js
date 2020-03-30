@@ -8,6 +8,8 @@ const initialState = {
   repoUrl: '',
   favRepos: [],
   repoIsFav: false,
+  isConnected: true,
+  userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399'
 };
 
 // Types
