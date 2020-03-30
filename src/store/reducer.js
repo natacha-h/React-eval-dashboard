@@ -66,10 +66,24 @@ const reducer = (state = initialState, action = {}) => {
         }
       }
       case FAV_REPO: {
-        return {
-          ...state,
-          favRepos: [...state.favRepos, state.repoUrl],
-          repoIsFav: true,
+        // je vérifie si l'url existe déja dans favRepos
+        const favExist = state.favRepos.find(url => (url === state.repoUrl));
+        // si elle existe, c'est que je l'ai déjà en favori, c'est donc que j'ai cliqué pour la dé-favoriser
+        if (favExist) {
+          // donc je dois la retirer du tableau et mettre repoIsFav à false
+          const newFavRepos = state.favRepos.filter(url => url !== favExist);
+          return {
+            ...state,
+            favRepos: newFavRepos,
+            repoIsFav: false
+          }
+          // sinon si elle n'existe pas, c'est que je veux l'ajouter en favori
+        } else {
+          return {
+            ...state,
+            favRepos: [...state.favRepos, state.repoUrl],
+            repoIsFav: true,
+          }
         }
       }
     default:
@@ -138,6 +152,6 @@ export const formatRepoFiles = state =>  {
    return orderedFiles;
 }
 
-// export const getFavStatus = state => state.favRepos.filter(url => url === state.repoUrl)
+export const getFavStatus = state => state.favRepos.includes(state.repoUrl);
 
 export default reducer;
