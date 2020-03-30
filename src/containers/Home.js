@@ -12,11 +12,7 @@ const mapStateToProps = state => ({
 });
 
 // == Actions : tout ce qui sera dispatché pour modifier le state
-const mapDispatchToProps = dispatch => ({
-    clickOnConnect: () => {
-        dispatch(getUser())
-    },
-});
+const mapDispatchToProps = {};
 
 // Container
 const  HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);

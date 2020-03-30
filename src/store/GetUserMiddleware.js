@@ -1,4 +1,4 @@
-import { GET_USER } from './reducer'
+import { GET_USER, connectUser } from './reducer'
 import axios from 'axios';
 
 const GetUserMiddleware = store => next => (action) => {
@@ -12,9 +12,10 @@ const GetUserMiddleware = store => next => (action) => {
                 }
             }) 
             .then((response) => {
-            
-            console.log(response.data);
+            const userDatas = response.data;
+            console.log(userDatas);
             // je renvoie les données reçues au state
+            store.dispatch(connectUser(userDatas));
             
             })
             .catch((error) => {

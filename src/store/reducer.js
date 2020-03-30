@@ -9,7 +9,8 @@ const initialState = {
   favRepos: [],
   repoIsFav: false,
   isConnected: false,
-  userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399'
+  userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399',
+  user: {},
 };
 
 // Types
@@ -94,7 +95,7 @@ const reducer = (state = initialState, action = {}) => {
         return{
           ...state,
           isConnected: true,
-          
+          user: {...action.datas},
         }
       }
     default:
@@ -138,6 +139,11 @@ export const favRepo = () => ({
 
 export const getUser = () => ({
   type: GET_USER,
+})
+
+export const connectUser = datas => ({
+  type: CONNECT,
+  datas
 })
 
 // Selectors
