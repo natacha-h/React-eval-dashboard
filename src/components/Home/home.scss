@@ -1,14 +1,8 @@
 #login-form{
-    display: flex;
-    flex-direction: column;
-    max-width: 50%;
+    width: 50%;
     margin: 0 auto;
-    align-items: center;
-    
-    input{
-        margin-bottom: 1.5em;
-    }
 }
+
 #profile{
     button{
         float: right;

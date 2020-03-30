@@ -9,11 +9,13 @@ import Profile from './Profile';
 import './home.scss';
 
 // == Composant
-const Home = ({ isConnected }) => (
+const Home = ({ isConnected, clickOnConnect }) => (
     <div>
         { 
         isConnected ? <Profile/> : 
-        < Login />  
+        < Login
+            clickOnConnect={clickOnConnect}
+        />  
         
         }
     </div>
@@ -22,7 +24,7 @@ const Home = ({ isConnected }) => (
 
 // == Validation props
 Home.propTypes = {
-    isConnected: PropTypes.bool.isRequired
+    isConnected: PropTypes.bool.isRequired,
 }
 
 // == Export

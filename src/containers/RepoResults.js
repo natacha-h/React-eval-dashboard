@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // == Import: local
 import RepoResults from 'src/components/RepoResults';
-import { formatResults, findOneRepo } from 'src/store/reducer';
+import { formatResults } from 'src/store/reducer';
 
 // Préparation
 // == Données qui sont dans le State

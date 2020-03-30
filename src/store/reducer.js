@@ -8,7 +8,7 @@ const initialState = {
   repoUrl: '',
   favRepos: [],
   repoIsFav: false,
-  isConnected: true,
+  isConnected: false,
   userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399'
 };
 
@@ -20,6 +20,8 @@ export const FIND_ONE_REPO = 'FIND_ONE_REPO';
 const RECEIVE_FILES = 'RECEIVE_FILES';
 const BACK_TO_RESULTS = 'BACK_TO_RESULTS';
 const FAV_REPO = 'FAV_REPO';
+const CONNECT = 'CONNECT';
+export const GET_USER = 'GET_USER'
 
 // inverser la valeur d'un booléen
 const toggle = key => !key;
@@ -88,6 +90,13 @@ const reducer = (state = initialState, action = {}) => {
           }
         }
       }
+      case CONNECT:{
+        return{
+          ...state,
+          isConnected: true,
+          
+        }
+      }
     default:
       return state;
   }
@@ -125,6 +134,10 @@ export const backToResults = () => ({
 
 export const favRepo = () => ({
   type: FAV_REPO,
+})
+
+export const getUser = () => ({
+  type: GET_USER,
 })
 
 // Selectors
