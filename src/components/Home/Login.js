@@ -11,7 +11,6 @@ const Login = ({clickOnConnect}) => {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        console.log('j\'ai soumis le formulaire');
         clickOnConnect();
 
     }

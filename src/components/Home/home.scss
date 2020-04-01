@@ -7,12 +7,13 @@
     button{
         float: right;
     }
-
-    &-user{
     
+    &-user{
+        
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-bottom: 2em;
         border-bottom: 1px solid #ccc;
         padding: 1em 0;
     

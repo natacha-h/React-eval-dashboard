@@ -24,6 +24,8 @@ const FAV_REPO = 'FAV_REPO';
 const CONNECT = 'CONNECT';
 export const GET_USER = 'GET_USER';
 const LOG_OUT = 'LOG_OUT';
+export const GET_USER_OWN_REPOS = 'GET_USER_OWN_REPOS';
+const RECEIVE_USER_OWN_REPOS = 'RECEIVE_USER_OWN_REPOS';
 
 // inverser la valeur d'un booléen
 const toggle = key => !key;
@@ -103,6 +105,12 @@ const reducer = (state = initialState, action = {}) => {
           user: {...action.datas},
         }
       }
+      case RECEIVE_USER_OWN_REPOS: {
+        return {
+          ...state,
+          results: [...action.repos]
+        }
+      }
       case LOG_OUT: {
         return {
           ...state,
@@ -110,6 +118,7 @@ const reducer = (state = initialState, action = {}) => {
           files: [],
           isConnected: false,
           user: {},
+          userRepos: [],
         }
 
       }
@@ -156,9 +165,17 @@ export const getUser = () => ({
   type: GET_USER,
 })
 
-export const connectUser = datas => ({
+export const connectUser = (datas) => ({
   type: CONNECT,
-  datas
+  datas,
+})
+export const getUserOwnRepos = () => ({
+  type: GET_USER_OWN_REPOS,
+})
+
+export const receiveUserOwnRepos = repos => ({
+  type: RECEIVE_USER_OWN_REPOS,
+  repos,
 })
 
 export const logOut = () => ({
