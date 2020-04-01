@@ -1,10 +1,11 @@
 // == Import: npm
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 
 // == Import: local
 import Login from 'src/containers/Login';
-import Profile from './Profile';
+import Profile from 'src/containers/Profile';
 
 import './home.scss';
 
@@ -12,7 +13,7 @@ import './home.scss';
 const Home = ({ isConnected }) => (
     <div>
         { 
-        isConnected ? <Profile/> : 
+        isConnected ? <Profile />: 
         < Login/>  
         
         }

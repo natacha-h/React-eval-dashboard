@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 // == Import: local
 import Home from 'src/components/Home';
-import { getUser } from 'src/store/reducer';
 
 // Préparation
 // == Données qui sont dans le State

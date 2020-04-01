@@ -22,7 +22,8 @@ const RECEIVE_FILES = 'RECEIVE_FILES';
 const BACK_TO_RESULTS = 'BACK_TO_RESULTS';
 const FAV_REPO = 'FAV_REPO';
 const CONNECT = 'CONNECT';
-export const GET_USER = 'GET_USER'
+export const GET_USER = 'GET_USER';
+const LOG_OUT = 'LOG_OUT';
 
 // inverser la valeur d'un booléen
 const toggle = key => !key;
@@ -44,6 +45,7 @@ const reducer = (state = initialState, action = {}) => {
       case RECEIVE_RESULTS: {
         return {
           ...state,
+          value: '',
           results: [...action.results],
           loading: false,
         }
@@ -68,6 +70,9 @@ const reducer = (state = initialState, action = {}) => {
         return {
           ...state,
           view: 'repos',
+          repoName: '',
+          repoUrl: '',
+          files: [],
         }
       }
       case FAV_REPO: {
@@ -97,6 +102,16 @@ const reducer = (state = initialState, action = {}) => {
           isConnected: true,
           user: {...action.datas},
         }
+      }
+      case LOG_OUT: {
+        return {
+          ...state,
+          results: [],
+          files: [],
+          isConnected: false,
+          user: {},
+        }
+
       }
     default:
       return state;
@@ -144,6 +159,10 @@ export const getUser = () => ({
 export const connectUser = datas => ({
   type: CONNECT,
   datas
+})
+
+export const logOut = () => ({
+  type: LOG_OUT,
 })
 
 // Selectors
