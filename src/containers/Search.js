@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // == Import: local
 import Search from 'src/components/Search';
-import { changeInput, searchRepos } from 'src/store/reducer';
+import { changeInput, searchRepos, emptyResults } from 'src/store/reducer';
 
 // Préparation
 // == Données qui sont dans le State
@@ -20,7 +20,10 @@ const mapDispatchToProps = dispatch => ({
     },
     onSubmitSearch: (value) => {
         dispatch(searchRepos(value))
-    }
+    },
+    emptyResults: () => {
+        dispatch(emptyResults())
+    },
 });
 
 // Container

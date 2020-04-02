@@ -5,6 +5,9 @@ import { Image, Card, Button } from 'semantic-ui-react';
 
 // == Import: local
 import DisplayCard from 'src/containers/DisplayCard'; 
+import RepoFilesList from 'src/containers/RepoFilesList';
+import ReposResults from 'src/containers/RepoResults';
+
 
 // == Composant
 // j'ai besoin des ComponentDidMount ==> je transforme Profile en class
@@ -16,12 +19,23 @@ class Profile extends React.Component {
         findUserRepos(repos_url);
     }
 
+    changeView = () => {
+        const { view } = this.props; 
+        if (view === "repos") {
+          return <ReposResults/>
+        }
+        if (view === "files") {
+          return <RepoFilesList/>
+        }
+      }
+
     render(){
         const { user, logOut, nbOfFavorites, repos } = this.props;
         const { login, avatar_url, public_repos} = user
         return (
             <div id='profile'>
                 <Button 
+                    id="logout"
                     basic
                     onClick={logOut}
                 >
@@ -44,7 +58,8 @@ class Profile extends React.Component {
                             {...repo}
                         />           
                     )}
-              </Card.Group>            
+              </Card.Group>  
+              {this.changeView()}          
             </div>
         )        
     }

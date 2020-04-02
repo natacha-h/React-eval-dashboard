@@ -12,13 +12,7 @@ const Navigation = () => (
     <nav>
         <Menu>
             <NavLink to='/'>
-                <Menu.Item
-                    // name='home'
-                    // // active={activeItem === 'home'}
-                    // onClick={handleClick('home')}
-                >
-                Home
-                </Menu.Item>       
+                <Menu.Item>Home</Menu.Item>       
             </NavLink>
     
             <NavLink to='/search'>

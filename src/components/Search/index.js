@@ -34,10 +34,18 @@ class Search extends React.Component {
     }
   }
 
+  componentDidMount(){
+    const { emptyResults } = this.props;
+    emptyResults();
+  }
+
+  
+
   render() {
     const { value, loading } = this.props;
     return (
       <div>
+        
         <div id="search-bar">
           <form onSubmit={this.handleSubmit}>
             <Input 

@@ -26,6 +26,7 @@ export const GET_USER = 'GET_USER';
 const LOG_OUT = 'LOG_OUT';
 export const GET_USER_OWN_REPOS = 'GET_USER_OWN_REPOS';
 const RECEIVE_USER_OWN_REPOS = 'RECEIVE_USER_OWN_REPOS';
+const EMPTY_RESULTS = 'EMPTY_RESULTS';
 
 // inverser la valeur d'un booléen
 const toggle = key => !key;
@@ -120,7 +121,12 @@ const reducer = (state = initialState, action = {}) => {
           user: {},
           userRepos: [],
         }
-
+      }
+      case EMPTY_RESULTS: {
+        return {
+          ...state, 
+          results: [],
+        }
       }
     default:
       return state;
@@ -182,10 +188,23 @@ export const logOut = () => ({
   type: LOG_OUT,
 })
 
+export const emptyResults = () => ({
+  type: EMPTY_RESULTS,
+})
+
 // Selectors
 // Mise en forme des résultats :
 // - Pour le résultat de la recherche
-export const formatResults = state => state.results.map(result => ({
+export const formatResults = (state) => state.results.map(result => ({
+  id: result.id,
+  name: result.name,
+  description: result.description,
+  author: result.owner.login,
+  image: result.owner.avatar_url,
+  repoUrl: `${result.url}/contents`, 
+}));
+
+export const formatUserRepos = (state) => state.userRepos.map(result => ({
   id: result.id,
   name: result.name,
   description: result.description,

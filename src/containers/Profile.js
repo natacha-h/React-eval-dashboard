@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
     user: state.user,
     nbOfFavorites: state.favRepos.length,
     repos: formatResults(state),
+    view: state.view,
 });
 
 // == Actions : tout ce qui sera dispatché pour modifier le state
