@@ -1,4 +1,4 @@
-import { SEARCH_REPOS, receiveResults } from './reducer'
+import { SEARCH_REPOS, receiveResults, formatResults } from './reducer'
 import axios from 'axios';
 
 const AjaxMiddleware = store => next => (action) => {
@@ -13,9 +13,10 @@ const AjaxMiddleware = store => next => (action) => {
          axios.get(`https://api.github.com/search/repositories?q=${value}`) // template string = pas besoin de concaténer :D
           .then((response) => {
           const results= response.data.items;
+          const formatedResults = formatResults(results);
           console.log(results);
           // je renvoie les données reçues au state
-          store.dispatch(receiveResults(results));
+          store.dispatch(receiveResults(formatedResults));
           })
           .catch()
           }

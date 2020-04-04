@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 
 // == Import: local
 import Profile from 'src/components/Home/Profile';
-import { logOut, formatResults, getUserOwnRepos } from 'src/store/reducer';
+import { logOut } from 'src/store/reducer';
 
 // Préparation
 // == Données qui sont dans le State
 const mapStateToProps = state => ({
     user: state.user,
     nbOfFavorites: state.favRepos.length,
-    repos: formatResults(state),
+    repos: state.userRepos,
     view: state.view,
 });
 
@@ -20,9 +20,9 @@ const mapDispatchToProps = dispatch => ({
         console.log('clic sur logout');
         dispatch(logOut())
     },
-    findUserRepos: (value) => {
-        dispatch(getUserOwnRepos(value))
-    }
+    // findUserRepos: (value) => {
+    //     dispatch(getUserOwnRepos(value))
+    // }
 });
 
 // Container
