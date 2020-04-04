@@ -6,7 +6,7 @@ const initialState = {
   view: 'repos',
   repoName: '',
   repoUrl: '',
-  favRepos: [],
+  favRepos: [], // au lieu de ranger juste l'url, copier carrément les repos
   repoIsFav: false,
   isConnected: false,
   userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399',
@@ -195,6 +195,7 @@ export const emptyResults = () => ({
 // Selectors
 // Mise en forme des résultats :
 // - Pour le résultat de la recherche
+// déplacer/exporter  celui là dans middleWare => ça renvoit les résultat mis en forme, je peux passer les différents groupes aux containers (grouper les middleware en fixbug double recherche, ça doit marcher)
 export const formatResults = (state) => state.results.map(result => ({
   id: result.id,
   name: result.name,

@@ -7,7 +7,9 @@ import { getUser } from 'src/store/reducer';
 
 // Préparation
 // == Données qui sont dans le State
-const mapStateToProps = null;
+const mapStateToProps = state => ({
+    userToken: state.userToken,
+});
 
 // == Actions : tout ce qui sera dispatché pour modifier le state
 const mapDispatchToProps = dispatch => ({

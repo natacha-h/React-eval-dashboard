@@ -7,7 +7,7 @@ import {Input, Button, Form} from 'semantic-ui-react';
 
 
 // == Composant
-const Login = ({clickOnConnect}) => {
+const Login = ({clickOnConnect, userToken}) => {
 
     const handleSubmit = evt => {
         evt.preventDefault();
@@ -19,8 +19,11 @@ const Login = ({clickOnConnect}) => {
         <Form id="login-form"
         onSubmit={handleSubmit}>
             <Form.Field>
-                <label>Votre nom d'utilisateur GitHub</label>
-                <Input placeholder='pseudo GitHub'/>
+                <label>Votre Token GitHub</label>
+                <Input 
+                placeholder='token GitHub'
+                value={userToken}
+                />
             </Form.Field>
             <Button color='teal'>Se connecter</Button>
         </Form>
@@ -31,6 +34,11 @@ const Login = ({clickOnConnect}) => {
 // == Validation props
 Login.propTypes = {
     clickOnConnect: PropTypes.func.isRequired,
+    userToken: PropTypes.string.isRequired
+}
+
+Login.defaultProps = {
+    userToken: '',
 }
 
 // == Export
