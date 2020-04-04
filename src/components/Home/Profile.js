@@ -66,7 +66,7 @@ import ReposResults from 'src/components/RepoResults';
 //     }
 // }
 
-const Profile = ({ user, logOut, nbOfFavorites, userRepos, view }) => {
+const Profile = ({ user, logOut, nbOfFavorites, userRepos, view, favoriteRepos }) => {
     const { login, avatar_url, public_repos} = user;
 
     const changeView = () => {
@@ -120,7 +120,9 @@ const Profile = ({ user, logOut, nbOfFavorites, userRepos, view }) => {
         
         <div className='display-repos'>
             <h2> Mes favoris </h2>
-            Ici les repos favoris
+            <ReposResults
+            results={favoriteRepos}
+            />
        
         </div>
     </div>
@@ -134,6 +136,7 @@ Profile.propTypes = {
     logOut: PropTypes.func.isRequired,
     view: PropTypes.string.isRequired,
     userRepos: PropTypes.array.isRequired,
+    favoriteRepos: PropTypes.array.isRequired,
 }
 
 // == Export
