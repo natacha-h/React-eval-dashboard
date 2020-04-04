@@ -11,6 +11,7 @@ const initialState = {
   isConnected: false,
   userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399',
   user: {},
+  userRepos: [],
 };
 
 // Types
@@ -103,15 +104,16 @@ const reducer = (state = initialState, action = {}) => {
         return{
           ...state,
           isConnected: true,
-          user: {...action.datas},
+          user: {...action.user},
+          userRepos: [...action.repos],
         }
       }
-      case RECEIVE_USER_OWN_REPOS: {
-        return {
-          ...state,
-          results: [...action.repos]
-        }
-      }
+      // case RECEIVE_USER_OWN_REPOS: {
+      //   return {
+      //     ...state,
+      //     results: [...action.repos]
+      //   }
+      // }
       case LOG_OUT: {
         return {
           ...state,
@@ -171,18 +173,19 @@ export const getUser = () => ({
   type: GET_USER,
 })
 
-export const connectUser = (datas) => ({
+export const connectUser = (user, repos) => ({
   type: CONNECT,
-  datas,
+  user,
+  repos,
 })
 export const getUserOwnRepos = () => ({
   type: GET_USER_OWN_REPOS,
 })
 
-export const receiveUserOwnRepos = repos => ({
-  type: RECEIVE_USER_OWN_REPOS,
-  repos,
-})
+// export const receiveUserOwnRepos = repos => ({
+//   type: RECEIVE_USER_OWN_REPOS,
+//   repos,
+// })
 
 export const logOut = () => ({
   type: LOG_OUT,
