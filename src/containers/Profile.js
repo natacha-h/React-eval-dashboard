@@ -10,7 +10,8 @@ import { logOut } from 'src/store/reducer';
 const mapStateToProps = state => ({
     user: state.user,
     nbOfFavorites: state.favRepos.length,
-    repos: state.userRepos,
+    userRepos: state.userRepos,
+    favoriteRepos: state.favRepos,
     view: state.view,
 });
 

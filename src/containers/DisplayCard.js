@@ -12,8 +12,8 @@ const mapStateToProps = null;
 // == Actions : tout ce qui sera dispatché pour modifier le state
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onRepoClick: () => {
-        const { repoUrl, name } = ownProps;
-        dispatch(findOneRepo(repoUrl, name))
+        const { repoUrl, name, id } = ownProps;
+        dispatch(findOneRepo(repoUrl, name, id))
     }
 });
 

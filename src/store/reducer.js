@@ -6,6 +6,8 @@ const initialState = {
   view: 'repos',
   repoName: '',
   repoUrl: '',
+  repoId: '',
+  listOfFavs: [],
   favRepos: [], // au lieu de ranger juste l'url, copier carrément les repos
   repoIsFav: false,
   isConnected: false,
@@ -57,6 +59,7 @@ const reducer = (state = initialState, action = {}) => {
           loading: true,
           repoName: action.name,
           repoUrl: action.url,
+          repoId: action.id
         }
       }
       case RECEIVE_FILES: {
@@ -77,22 +80,29 @@ const reducer = (state = initialState, action = {}) => {
         }
       }
       case FAV_REPO: {
-        // je vérifie si l'url existe déja dans favRepos
-        const favExist = state.favRepos.find(url => (url === state.repoUrl));
-        // si elle existe, c'est que je l'ai déjà en favori, c'est donc que j'ai cliqué pour la dé-favoriser
+        // je vérifie si le repo existe déja dans listOfFavs
+        const favExist = state.listOfFavs.find(id => (id === state.repoId));
+        // si il existe, c'est que je l'ai déjà en favori, c'est donc que j'ai cliqué pour le dé-favoriser
         if (favExist) {
-          // donc je dois la retirer du tableau et mettre repoIsFav à false
-          const newFavRepos = state.favRepos.filter(url => url !== favExist);
+          // donc je dois retirer son ID de la liste, retirer le repo du tableau de repos et mettre repoIsFav à false
+          const newFavList = state.listOfFavs.filter(id => id !== favExist);
+          const newFavRepos = state.favRepos.filter(repo => repo.id !== favExist)
           return {
             ...state,
+            listOfFavs: newFavList,
             favRepos: newFavRepos,
             repoIsFav: false
           }
           // sinon si elle n'existe pas, c'est que je veux l'ajouter en favori
         } else {
+          // je vais chercher le repo
+          const newFav = state.results.filter(result => result.id === state.repoId);
+          // et je le rajoute à favRepos
+          const newFavRepos = [...state.favRepos, ...newFav]
           return {
             ...state,
-            favRepos: [...state.favRepos, state.repoUrl],
+            favRepos: newFavRepos,
+            listOfFavs: [...state.listOfFavs, state.repoId],
             repoIsFav: true,
           }
         }
@@ -146,10 +156,11 @@ export const searchRepos = () => ({
   type: SEARCH_REPOS,
 });
 
-export const findOneRepo = (url, name) => ({
+export const findOneRepo = (url, name, id) => ({
   type: FIND_ONE_REPO,
   url,
   name,
+  id
 })
 
 export const receiveResults = results => ({
@@ -221,6 +232,6 @@ export const formatRepoFiles = state =>  {
 }
 
 // récupérer le status (favoris ou pas) d'un repo
-export const getFavStatus = state => state.favRepos.includes(state.repoUrl);
+export const getFavStatus = state => state.listOfFavs.includes(state.repoId);
 
 export default reducer;

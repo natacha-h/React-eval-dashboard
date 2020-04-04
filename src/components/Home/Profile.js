@@ -66,7 +66,7 @@ import ReposResults from 'src/components/RepoResults';
 //     }
 // }
 
-const Profile = ({ user, logOut, nbOfFavorites, repos, view }) => {
+const Profile = ({ user, logOut, nbOfFavorites, userRepos, view }) => {
     const { login, avatar_url, public_repos} = user;
 
     const changeView = () => {
@@ -108,9 +108,21 @@ const Profile = ({ user, logOut, nbOfFavorites, repos, view }) => {
                 />           
             )}
       </Card.Group> */}
-    {
+    {/* {
         changeView()
-    }
+    } */}
+        <div className='display-repos'>
+            <h2> Mes repos </h2>
+            <ReposResults
+            results={userRepos}
+            />            
+        </div>
+        
+        <div className='display-repos'>
+            <h2> Mes favoris </h2>
+            Ici les repos favoris
+       
+        </div>
     </div>
 )
 }
@@ -119,6 +131,9 @@ const Profile = ({ user, logOut, nbOfFavorites, repos, view }) => {
 Profile.propTypes = {
     user: PropTypes.object.isRequired,
     nbOfFavorites: PropTypes.number.isRequired,
+    logOut: PropTypes.func.isRequired,
+    view: PropTypes.string.isRequired,
+    userRepos: PropTypes.array.isRequired,
 }
 
 // == Export
