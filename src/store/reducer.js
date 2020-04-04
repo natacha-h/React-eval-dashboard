@@ -136,6 +136,10 @@ const reducer = (state = initialState, action = {}) => {
         return {
           ...state, 
           results: [],
+          view: 'repos',
+          files: [],
+          repoName: '',
+          repoUrl: '',
         }
       }
     default:

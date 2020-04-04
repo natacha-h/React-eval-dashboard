@@ -20,9 +20,7 @@ const mapDispatchToProps = dispatch => ({
         console.log('clic sur logout');
         dispatch(logOut())
     },
-    // findUserRepos: (value) => {
-    //     dispatch(getUserOwnRepos(value))
-    // }
+
 });
 
 // Container

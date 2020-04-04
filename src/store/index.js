@@ -2,7 +2,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import AjaxMiddleware from './AjaxMiddleware';
 import OneRepoMiddleware from './OneRepoMiddleware';
 import GetUserMiddleware from './GetUserMiddleware';
-// import GetUserReposMiddleware from './GetUserReposMiddleware';
 import reducer from './reducer';
 
 const middlewares = applyMiddleware(GetUserMiddleware, AjaxMiddleware, OneRepoMiddleware);

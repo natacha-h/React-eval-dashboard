@@ -6,7 +6,7 @@ import { Image, Card, Button } from 'semantic-ui-react';
 // == Import: local
 import DisplayCard from 'src/containers/DisplayCard'; 
 import RepoFilesList from 'src/containers/RepoFilesList';
-import ReposResults from 'src/containers/RepoResults';
+import ReposResults from 'src/components/RepoResults';
 
 
 // == Composant
@@ -65,11 +65,23 @@ import ReposResults from 'src/containers/RepoResults';
 //     }
 // }
 
-const Profile = ({ user, logOut, nbOfFavorites, repos }) => {
-    const { login, avatar_url, public_repos} = user
+const Profile = ({ user, logOut, nbOfFavorites, repos, view }) => {
+    const { login, avatar_url, public_repos} = user;
+
+    const changeView = () => {
+        // const { view } = this.props; 
+        if (view === "repos") {
+            return <ReposResults results={repos}/>
+        }
+        if (view === "files") {
+            return <RepoFilesList/>
+        }
+    }
+    
     return (
     <div id='profile'>
         <Button 
+            id="logout"
             basic
             onClick={logOut}
         >
@@ -85,15 +97,17 @@ const Profile = ({ user, logOut, nbOfFavorites, repos }) => {
                 <p> Vous avez {nbOfFavorites} repos en favori</p>
             </div> 
         </div>
-        <Card.Group>
+        {/* <Card.Group>
             {repos.map(repo => 
                 <DisplayCard
                     key={repo.id}         
                     {...repo}
                 />           
             )}
-      </Card.Group>
-    
+      </Card.Group> */}
+    {
+        changeView()
+    }
     </div>
 )
 }
