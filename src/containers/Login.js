@@ -9,6 +9,8 @@ import { getUser } from 'src/store/reducer';
 // == Données qui sont dans le State
 const mapStateToProps = state => ({
     userToken: state.userToken,
+    message: state.message,
+    isConnected: state.isConnected
 });
 
 // == Actions : tout ce qui sera dispatché pour modifier le state

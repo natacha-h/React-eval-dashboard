@@ -11,6 +11,7 @@ import Navigation from 'src/components/Navigation';
 import About from 'src/components/About';
 import Search from 'src/containers/Search';
 import Home from 'src/containers/Home';
+import Profile from 'src/containers/Profile';
 
 // == Composant
 
@@ -30,6 +31,10 @@ class App extends React.Component {
               exact
               path='/'
               component={Home}
+            />
+            <Route
+              path='/profile'
+              component={Profile}
             />
             <Route
               path='/search'

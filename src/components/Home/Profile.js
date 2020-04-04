@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, Card, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 // == Import: local
 import DisplayCard from 'src/containers/DisplayCard'; 
@@ -80,13 +81,15 @@ const Profile = ({ user, logOut, nbOfFavorites, repos, view }) => {
     
     return (
     <div id='profile'>
-        <Button 
-            id="logout"
-            basic
-            onClick={logOut}
-        >
-            Se déconnecter
-        </Button>
+        <Link to='/'>
+            <Button 
+                id="logout"
+                basic
+                onClick={logOut}
+            >
+                Se déconnecter
+            </Button>
+        </Link>
         <h2> Bonjour {login} </h2>
         <div id="profile-user">
             <Image src={avatar_url} size='medium' bordered />

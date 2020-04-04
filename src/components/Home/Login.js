@@ -3,18 +3,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Input, Button, Form} from 'semantic-ui-react';
 
+
 // == Import: local
 
 
 // == Composant
-const Login = ({clickOnConnect, userToken}) => {
+const Login = ({clickOnConnect, userToken, message, isConnected}) => {
 
     const handleSubmit = evt => {
         evt.preventDefault();
         clickOnConnect();
 
     }
-
     return (
         <Form id="login-form"
         onSubmit={handleSubmit}>
@@ -25,6 +25,7 @@ const Login = ({clickOnConnect, userToken}) => {
                 value={userToken}
                 />
             </Form.Field>
+
             <Button color='teal'>Se connecter</Button>
         </Form>
     
@@ -34,11 +35,14 @@ const Login = ({clickOnConnect, userToken}) => {
 // == Validation props
 Login.propTypes = {
     clickOnConnect: PropTypes.func.isRequired,
-    userToken: PropTypes.string.isRequired
+    userToken: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    isConnected: PropTypes.bool.isRequired
 }
 
 Login.defaultProps = {
     userToken: '',
+    message: ''
 }
 
 // == Export

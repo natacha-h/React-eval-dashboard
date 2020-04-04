@@ -27,12 +27,7 @@ const CONNECT = 'CONNECT';
 export const GET_USER = 'GET_USER';
 const RECEIVE_USER_INFOS = 'RECEIVE_USER_INFOS';
 const LOG_OUT = 'LOG_OUT';
-// export const GET_USER_OWN_REPOS = 'GET_USER_OWN_REPOS';
-// const RECEIVE_USER_OWN_REPOS = 'RECEIVE_USER_OWN_REPOS';
 const EMPTY_RESULTS = 'EMPTY_RESULTS';
-
-// inverser la valeur d'un booléen
-const toggle = key => !key;
 
 // Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -116,12 +111,6 @@ const reducer = (state = initialState, action = {}) => {
           userRepos: [...action.repos],
         }
       }
-      // case RECEIVE_USER_OWN_REPOS: {
-      //   return {
-      //     ...state,
-      //     results: [...action.repos]
-      //   }
-      // }
       case LOG_OUT: {
         return {
           ...state,
@@ -195,14 +184,6 @@ export const receiveUserInfos = (user, repos) => ({
   user,
   repos,
 })
-// export const getUserOwnRepos = () => ({
-//   type: GET_USER_OWN_REPOS,
-// })
-
-// export const receiveUserOwnRepos = repos => ({
-//   type: RECEIVE_USER_OWN_REPOS,
-//   repos,
-// })
 
 export const logOut = () => ({
   type: LOG_OUT,
@@ -212,10 +193,9 @@ export const emptyResults = () => ({
   type: EMPTY_RESULTS,
 })
 
-// Selectors
+/************* Selectors ****************/
 // Mise en forme des résultats :
-// - Pour le résultat de la recherche
-// déplacer/exporter  celui là dans middleWare => ça renvoit les résultat mis en forme, je peux passer les différents groupes aux containers (grouper les middleware en fixbug double recherche, ça doit marcher)
+  // - Pour le résultat de la recherche (exporté dans middleWares => ça renvoit les résultat mis en forme, je peux passer les différents groupes aux containers)
 export const formatResults = results => results.map(result => ({
   id: result.id,
   name: result.name,
@@ -225,7 +205,7 @@ export const formatResults = results => results.map(result => ({
   repoUrl: `${result.url}/contents`, 
 }));
 
-// - Pour l'affichage du contenu d'un Repo
+  // - Pour l'affichage du contenu d'un Repo (utilisé dans le container RepoFilesList)
 export const formatRepoFiles = state =>  {
   const formattedFiles = state.files.map(file => ({
     name: file.name,
@@ -240,6 +220,7 @@ export const formatRepoFiles = state =>  {
    return orderedFiles;
 }
 
+// récupérer le status (favoris ou pas) d'un repo
 export const getFavStatus = state => state.favRepos.includes(state.repoUrl);
 
 export default reducer;
