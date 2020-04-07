@@ -44,6 +44,17 @@ class App extends React.Component {
               path='/about'
               component={About}
             />
+            <Route
+              path='search/repo/:name'
+              render={(match) => {
+                const { name } = match.params;
+                return(
+                  <div> 
+                    J'affiche la recette {name}
+                  </div>
+                )
+              }}
+            />
           </Switch>
                  
         </main>

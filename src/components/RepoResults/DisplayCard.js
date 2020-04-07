@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {Card} from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 // == Import: local
 
@@ -9,13 +10,15 @@ import {Card} from 'semantic-ui-react';
 const DisplayCard = ( { name, image, author, description, onRepoClick }) => {
   
     return (  
-      <Card
-        onClick={onRepoClick}
-        image={image}
-        header={name}
-        meta={author}
-        description={description}
-      />    
+      <Link to={`search/repo/${name}`}>
+        <Card
+          onClick={onRepoClick}
+          image={image}
+          header={name}
+          meta={author}
+          description={description}
+        />    
+        </Link>
     );
   }
 

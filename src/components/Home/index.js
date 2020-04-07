@@ -12,6 +12,7 @@ import './home.scss';
 const Home = ({ isConnected }) => (
 
     <div>
+        <h1>Bienvenue sur votre tableau de bord</h1>
         { 
         isConnected ? <Redirect to='/profile'/>: 
         < Login/>  

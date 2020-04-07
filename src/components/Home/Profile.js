@@ -69,7 +69,7 @@ import ReposResults from 'src/components/RepoResults';
 const Profile = ({ user, logOut, nbOfFavorites, userRepos, view, favoriteRepos }) => {
     const { login, avatar_url, public_repos} = user;
 
-    const changeView = () => {
+    const changeView = (repos) => {
         // const { view } = this.props; 
         if (view === "repos") {
             return <ReposResults results={repos}/>
@@ -109,20 +109,22 @@ const Profile = ({ user, logOut, nbOfFavorites, userRepos, view, favoriteRepos }
             )}
       </Card.Group> */}
     {/* {
-        changeView()
     } */}
         <div className='display-repos'>
             <h2> Mes repos </h2>
-            <ReposResults
+            {/* <ReposResults
             results={userRepos}
-            />            
+        />             */}
+            {changeView(userRepos)}
+
         </div>
         
         <div className='display-repos'>
             <h2> Mes favoris </h2>
-            <ReposResults
+            {/* <ReposResults
             results={favoriteRepos}
-            />
+        /> */}
+            {changeView(favoriteRepos)}
        
         </div>
     </div>

@@ -11,7 +11,7 @@ const initialState = {
   favRepos: [], // et ici je stocke une copie des repos favoris, déjà mis en forme
   repoIsFav: false,
   isConnected: false,
-  message: '',
+  message: 'Utilisez votre token GitHub pour vous connecter',
   userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399',
   user: {}, // stocke les infos du user
   userRepos: [], // stocke les repos du user
@@ -115,6 +115,12 @@ const reducer = (state = initialState, action = {}) => {
           message: action.message,
         }
       }
+      case GET_USER: {
+        return{
+          ...state,
+          loading: true,
+        }
+      }
       case RECEIVE_USER_INFOS:{
         return{
           ...state,
@@ -130,6 +136,8 @@ const reducer = (state = initialState, action = {}) => {
           isConnected: false,
           user: {},
           userRepos: [],
+          loading: false,
+          message: 'Utilisez votre token GitHub pour vous connecter',
         }
       }
       case EMPTY_RESULTS: {

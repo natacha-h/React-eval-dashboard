@@ -10,7 +10,8 @@ import { getUser, changeInput } from 'src/store/reducer';
 const mapStateToProps = state => ({
     userToken: state.userToken,
     message: state.message,
-    isConnected: state.isConnected
+    isConnected: state.isConnected,
+    loading: state.loading,
 });
 
 // == Actions : tout ce qui sera dispatché pour modifier le state
