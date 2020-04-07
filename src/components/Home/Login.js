@@ -8,12 +8,16 @@ import {Input, Button, Form} from 'semantic-ui-react';
 
 
 // == Composant
-const Login = ({clickOnConnect, userToken, message, isConnected}) => {
+const Login = ({clickOnConnect, userToken, onInputChange, message, isConnected}) => {
 
     const handleSubmit = evt => {
         evt.preventDefault();
         clickOnConnect();
+    }
 
+    const handleInputChange = evt => {
+        const { value, name } = evt.target;
+        onInputChange(value, name);
     }
     return (
         <Form id="login-form"
@@ -23,6 +27,8 @@ const Login = ({clickOnConnect, userToken, message, isConnected}) => {
                 <Input 
                 placeholder='token GitHub'
                 value={userToken}
+                name='userToken'
+                onChange={handleInputChange}
                 />
             </Form.Field>
 
@@ -37,7 +43,8 @@ Login.propTypes = {
     clickOnConnect: PropTypes.func.isRequired,
     userToken: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
-    isConnected: PropTypes.bool.isRequired
+    isConnected: PropTypes.bool.isRequired,
+    onInputChange: PropTypes.func.isRequired,
 }
 
 Login.defaultProps = {

@@ -19,9 +19,9 @@ class Search extends React.Component {
   }
   
   handleInputChange = evt => {
-    const { value } = evt.target;
+    const { value, name } = evt.target;
     const { onInputChange } = this.props;
-    onInputChange(value);
+    onInputChange(value, name);
   }
 
   changeView = () => {
@@ -55,6 +55,7 @@ class Search extends React.Component {
                 placeholder='Chercher un repo'
                 value={value}
                 onChange={this.handleInputChange}
+                name='searchValue'
             />
           </form>
         </div>

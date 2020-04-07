@@ -8,15 +8,15 @@ import { changeInput, searchRepos, emptyResults } from 'src/store/reducer';
 // Préparation
 // == Données qui sont dans le State
 const mapStateToProps = state => ({
-    value: state.value,
+    value: state.searchValue,
     loading: state.loading,
     view: state.view,
 });
 
 // == Actions : tout ce qui sera dispatché pour modifier le state
 const mapDispatchToProps = dispatch => ({
-    onInputChange: (value) => {
-        dispatch(changeInput(value))
+    onInputChange: (value, name) => {
+        dispatch(changeInput(value, name))
     },
     onSubmitSearch: (value) => {
         dispatch(searchRepos(value))

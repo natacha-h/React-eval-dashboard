@@ -6,7 +6,7 @@ const AjaxMiddleware = store => next => (action) => {
     switch (action.type) {
       case SEARCH_REPOS:{
         //je récupère la valeur de l'input
-        const value = store.getState().value;
+        const value = store.getState().searchValue;
         // petite vérification
         // console.log('Je suis AjaxMiddleware et je lance une recherche pour la valeur ', value);
 

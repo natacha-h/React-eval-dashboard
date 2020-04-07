@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // == Import: local
 import Login from 'src/components/Home/Login';
-import { getUser } from 'src/store/reducer';
+import { getUser, changeInput } from 'src/store/reducer';
 
 // Préparation
 // == Données qui sont dans le State
@@ -18,6 +18,9 @@ const mapDispatchToProps = dispatch => ({
     clickOnConnect: () => {
         dispatch(getUser())
     },
+    onInputChange: (value, name) => {
+        dispatch(changeInput(value, name))
+    }
 });
 
 // Container

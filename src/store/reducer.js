@@ -1,5 +1,5 @@
 const initialState = {
-  value: '',
+  searchValue: '',
   results: [],
   loading: false,
   files: [],
@@ -7,14 +7,14 @@ const initialState = {
   repoName: '',
   repoUrl: '',
   repoId: '',
-  listOfFavs: [],
-  favRepos: [], // au lieu de ranger juste l'url, copier carrément les repos
+  listOfFavs: [], // ici je stocke la liste des id des repos favoris
+  favRepos: [], // et ici je stocke une copie des repos favoris, déjà mis en forme
   repoIsFav: false,
   isConnected: false,
   message: '',
   userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399',
-  user: {},
-  userRepos: [],
+  user: {}, // stocke les infos du user
+  userRepos: [], // stocke les repos du user
 };
 
 // Types
@@ -37,7 +37,8 @@ const reducer = (state = initialState, action = {}) => {
     case CHANGE_INPUT:
       return {
         ...state,
-        value: action.value,
+        [action.name]: action.value,
+        
       };
       case SEARCH_REPOS: {
         return {
@@ -147,9 +148,10 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // Action creators
-export const changeInput = value => ({
+export const changeInput = (value, name) => ({
   type: CHANGE_INPUT,
   value,
+  name,
 });
 
 export const searchRepos = () => ({
