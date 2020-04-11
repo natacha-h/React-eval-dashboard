@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {Table, Icon, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 // == Import: local
 import './repoFiles.scss';
@@ -11,10 +12,12 @@ import './repoFiles.scss';
 const RepoFilesList = ( {files, name, onBackClick, onFavClick, isFav} ) => (
 
     <div id="display-files">
+        <Link to='/search'>
         <Button 
             content='Retour aux résultats' 
             onClick={onBackClick}
         />
+        </Link>
         <Table celled striped>
             <Table.Header>
                 <Table.Row>

@@ -12,6 +12,7 @@ import About from 'src/components/About';
 import Search from 'src/containers/Search';
 import Home from 'src/containers/Home';
 import Profile from 'src/containers/Profile';
+import RepoFilesList from 'src/containers/RepoFilesList';
 
 // == Composant
 
@@ -46,11 +47,12 @@ class App extends React.Component {
             />
             <Route
               path='/repo/:name'
-              render={(match) => {
-                console.log('match : ', match);
+              render={({match}) => {
+                const {name} = match.params;
                 return(
                   <div> 
                     J'affiche la recette {name}
+                  <RepoFilesList/>
                   </div>
                 )
               }}
