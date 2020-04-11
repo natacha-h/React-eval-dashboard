@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const DisplayCard = ( { name, image, author, description, onRepoClick }) => {
   
     return (  
-      <Link to={`search/repo/${name}`}>
+      <Link to={`/repo/${name}`}>
         <Card
           onClick={onRepoClick}
           image={image}
@@ -18,7 +18,7 @@ const DisplayCard = ( { name, image, author, description, onRepoClick }) => {
           meta={author}
           description={description}
         />    
-        </Link>
+      </Link>
     );
   }
 

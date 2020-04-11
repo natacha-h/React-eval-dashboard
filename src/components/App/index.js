@@ -45,9 +45,9 @@ class App extends React.Component {
               component={About}
             />
             <Route
-              path='search/repo/:name'
+              path='/repo/:name'
               render={(match) => {
-                const { name } = match.params;
+                console.log('match : ', match);
                 return(
                   <div> 
                     J'affiche la recette {name}

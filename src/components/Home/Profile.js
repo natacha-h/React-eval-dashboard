@@ -112,19 +112,19 @@ const Profile = ({ user, logOut, nbOfFavorites, userRepos, view, favoriteRepos }
     } */}
         <div className='display-repos'>
             <h2> Mes repos </h2>
-            {/* <ReposResults
+            <ReposResults
             results={userRepos}
-        />             */}
-            {changeView(userRepos)}
+        />            
+            {/* {changeView(userRepos)} */}
 
         </div>
         
         <div className='display-repos'>
             <h2> Mes favoris </h2>
-            {/* <ReposResults
+            <ReposResults
             results={favoriteRepos}
-        /> */}
-            {changeView(favoriteRepos)}
+        />
+            {/* {changeView(favoriteRepos)} */}
        
         </div>
     </div>
