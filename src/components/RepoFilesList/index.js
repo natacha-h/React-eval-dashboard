@@ -3,21 +3,25 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {Table, Icon, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 // == Import: local
 import './repoFiles.scss';
 
 // == Composant
-const RepoFilesList = ( {files, name, onBackClick, onFavClick, isFav} ) => (
+const RepoFilesList = ( {files, name, onBackClick, onFavClick, isFav} ) => {
 
-    <div id="display-files">
-        <Link to='/search'>
-        <Button 
+    const history = useHistory(
+        )
+    console.log('history : ' ,history);
+    
+    return (
+        
+        <div id="display-files">
+        <Button
             content='Retour aux résultats' 
-            onClick={onBackClick}
+            onClick={history.goBack}
         />
-        </Link>
         <Table celled striped>
             <Table.Header>
                 <Table.Row>
@@ -46,6 +50,7 @@ const RepoFilesList = ( {files, name, onBackClick, onFavClick, isFav} ) => (
     </div>
 
 )
+}
 
 // == Validation props
 RepoFilesList.proptypes = {
