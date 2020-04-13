@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {Table, Icon, Button } from 'semantic-ui-react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // == Import: local
 import './repoFiles.scss';
@@ -11,10 +11,8 @@ import './repoFiles.scss';
 // == Composant
 const RepoFilesList = ( {files, name, onBackClick, onFavClick, isFav} ) => {
 
-    const history = useHistory(
-        )
-    console.log('history : ' ,history);
-    
+    const history = useHistory();
+
     return (
         
         <div id="display-files">

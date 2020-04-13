@@ -5,7 +5,7 @@ const OneRepoMiddleware = store => next => (action) => {
     switch (action.type) {
       case FIND_ONE_REPO:{
         //petite vérification
-        console.log('clcik sur le repo' , action.url);
+        console.log('click sur le repo' , action.url);
         axios.get(action.url) 
           .then((response) => {
           const files = response.data;

@@ -1,15 +1,19 @@
 // == Import: npm
 import React from 'react';
 import PropTypes from "prop-types";
-import {Card} from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Card, Image } from 'semantic-ui-react';
+import { Link, Route } from 'react-router-dom';
 
 // == Import: local
 
 // == Composant
 const DisplayCard = ( { name, image, author, description, onRepoClick }) => {
-  
-    return (  
+
+  const handleClick = () => {
+    <Link to={`/repo/${name}`}/>
+    onRepoClick();
+  }
+    return ( 
       <Link to={`/repo/${name}`}>
         <Card
           onClick={onRepoClick}
@@ -18,7 +22,8 @@ const DisplayCard = ( { name, image, author, description, onRepoClick }) => {
           meta={author}
           description={description}
         />    
-      </Link>
+        </Link>
+
     );
   }
 
