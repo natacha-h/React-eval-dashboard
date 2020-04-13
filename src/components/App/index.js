@@ -48,14 +48,6 @@ class App extends React.Component {
             <Route
               path='/repo/:name'
               component={RepoFilesList}
-              // render={({match}) => {
-              //   const {name} = match.params;
-              //   return(
-              //     <div> 
-              //     <RepoFilesList/>
-              //     </div>
-              //   )
-              // }}
             />
           </Switch>
                  

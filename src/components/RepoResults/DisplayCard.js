@@ -9,10 +9,7 @@ import { Link, Route } from 'react-router-dom';
 // == Composant
 const DisplayCard = ( { name, image, author, description, onRepoClick }) => {
 
-  const handleClick = () => {
-    <Link to={`/repo/${name}`}/>
-    onRepoClick();
-  }
+  
     return ( 
       <Link to={`/repo/${name}`}>
         <Card

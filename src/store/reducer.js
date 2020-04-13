@@ -143,7 +143,6 @@ const reducer = (state = initialState, action = {}) => {
       case EMPTY_RESULTS: {
         return {
           ...state, 
-          // results: [],
           view: 'repos',
           files: [],
           repoName: '',

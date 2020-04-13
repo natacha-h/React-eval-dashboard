@@ -11,16 +11,6 @@ import ReposResults from 'src/components/RepoResults';
 
 const Profile = ({ user, logOut, nbOfFavorites, userRepos, view, favoriteRepos }) => {
     const { login, avatar_url, public_repos} = user;
-
-    const changeView = (repos) => {
-        // const { view } = this.props; 
-        if (view === "repos") {
-            return <ReposResults results={repos}/>
-        }
-        if (view === "files") {
-            return <RepoFilesList/>
-        }
-    }
     
     return (
     <div id='profile'>
