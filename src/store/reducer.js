@@ -12,7 +12,7 @@ const initialState = {
   repoIsFav: false,
   isConnected: false,
   message: 'Utilisez votre token GitHub pour vous connecter',
-  userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399',
+  userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399', // 6f8389e1a9793937c7c8a222b891168fb20dee82
   user: {}, // stocke les infos du user
   userRepos: [], // stocke les repos du user
 };
@@ -125,20 +125,22 @@ const reducer = (state = initialState, action = {}) => {
         return{
           ...state,
           user: {...action.user},
-          userRepos: [...action.repos],
+          userRepos: [...action.repos], 
         }
       }
       case LOG_OUT: {
-        return {
-          ...state,
-          results: [],
-          files: [],
-          isConnected: false,
-          user: {},
-          userRepos: [],
-          loading: false,
-          message: 'Utilisez votre token GitHub pour vous connecter',
-        }
+        // return {
+        //   ...state,
+        //   results: [],
+        //   files: [],
+        //   isConnected: false,
+        //   user: {},
+        //   userRepos: [],
+        //   loading: false,
+        //   message: 'Utilisez votre token GitHub pour vous connecter',
+        // }
+        // Beaucoup + rapide et simple => 
+        return initialState; 
       }
       case EMPTY_RESULTS: {
         return {

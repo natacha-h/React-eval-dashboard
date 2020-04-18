@@ -7,10 +7,21 @@ import { Link } from 'react-router-dom';
 // == Import: local
 import RepoFilesList from 'src/containers/RepoFilesList';
 import ReposResults from 'src/components/RepoResults';
+import UserRepos from 'src/containers/UserRepos';
 
 
 const Profile = ({ user, logOut, nbOfFavorites, userRepos, view, favoriteRepos }) => {
-    const { login, avatar_url, public_repos} = user;
+    const { login, avatar_url} = user;
+
+    const changeView = () => {
+        if (view === "repos") {
+            return <ReposResults/>
+          }
+          if (view === "files") {
+            return <RepoFilesList/>
+          }
+        }
+    
     
     return (
     <div id='profile'>
@@ -28,7 +39,7 @@ const Profile = ({ user, logOut, nbOfFavorites, userRepos, view, favoriteRepos }
             <Image src={avatar_url} size='medium' bordered />
             <div id="profile-user-stats">
                 <h3>Vos repos</h3>
-                <p>Vous avez { public_repos } repos</p>
+                <p>Vous avez { userRepos.length } repos</p>
                 <h3> Vos favoris </h3>
                 <p> Vous avez {nbOfFavorites} repos en favori</p>
             </div> 
@@ -36,13 +47,14 @@ const Profile = ({ user, logOut, nbOfFavorites, userRepos, view, favoriteRepos }
         
         <div className='display-repos'>
             <h2> Mes repos </h2>
-            <ReposResults
-            results={userRepos}
+            <UserRepos
         />            
+        
         </div>
         
         <div className='display-repos'>
             <h2> Mes favoris </h2>
+            {/* {changeView()} */}
             <ReposResults
             results={favoriteRepos}
         />       

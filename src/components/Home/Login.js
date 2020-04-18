@@ -28,7 +28,7 @@ const Login = ({clickOnConnect, userToken, onInputChange, message, loading}) => 
                 <Form.Field>
                     <label><Icon name='github'/>Votre Token GitHub</label>
                     <Input 
-                    placeholder='token GitHub'
+                    placeholder='Entrez votre token GitHub'
                     value={userToken}
                     name='userToken'
                     onChange={handleInputChange}

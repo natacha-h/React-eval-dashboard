@@ -11,15 +11,12 @@ const DisplayCard = ( { name, image, author, description, onRepoClick }) => {
 
   
     return ( 
-      <Link to={`/repo/${name}`}>
-        <Card
-          onClick={onRepoClick}
-          image={image}
-          header={name}
-          meta={author}
-          description={description}
-        />    
-        </Link>
+       <Card>
+         <Image src={image}></Image>
+         <Card.Header onClick={onRepoClick}><Link to={`/repo/${name}`}>{name}</Link></Card.Header>
+         <Card.Meta>{author}</Card.Meta>
+         <Card.Description>{description}</Card.Description>
+       </Card>
 
     );
   }

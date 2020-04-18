@@ -18,7 +18,7 @@ const RepoFilesList = ( {files, name, onBackClick, onFavClick, isFav} ) => {
         <div id="display-files">
         <Button
             content='Retour aux résultats' 
-            onClick={history.goBack}
+            onClick={onBackClick}
         />
         <Table celled striped>
             <Table.Header>
