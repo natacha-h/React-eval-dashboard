@@ -9,8 +9,8 @@ const OneRepoMiddleware = store => next => (action) => {
         axios.get(action.url) 
           .then((response) => {
           const files = response.data;
-          console.log(files);
-          console.log(response);
+          // console.log(files);
+          // console.log(response);
           // Je renvoie les données reçue au state
           store.dispatch(receiveFiles(files));
           })

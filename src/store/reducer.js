@@ -5,13 +5,11 @@ const initialState = {
   files: [],
   view: 'repos',
   repoName: '',
-  repoUrl: '',
   repoId: '',
   listOfFavs: [], // ici je stocke la liste des id des repos favoris
   favRepos: [], // et ici je stocke une copie des repos favoris, déjà mis en forme
   repoIsFav: false,
   isConnected: false,
-  message: 'Utilisez votre token GitHub pour vous connecter',
   userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399', // 6f8389e1a9793937c7c8a222b891168fb20dee82
   user: {}, // stocke les infos du user
   userRepos: [], // stocke les repos du user
@@ -59,8 +57,7 @@ const reducer = (state = initialState, action = {}) => {
           ...state,
           loading: true,
           repoName: action.name,
-          repoUrl: action.url,
-          repoId: action.id
+          repoId: action.id,
         }
       }
       case RECEIVE_FILES: {
@@ -76,7 +73,6 @@ const reducer = (state = initialState, action = {}) => {
           ...state,
           view: 'repos',
           repoName: '',
-          repoUrl: '',
           files: [],
         }
       }
@@ -98,13 +94,26 @@ const reducer = (state = initialState, action = {}) => {
         } else {
           // je vais chercher le repo
           const newFav = state.results.filter(result => result.id === state.repoId);
-          // et je le rajoute à favRepos
-          const newFavRepos = [...state.favRepos, ...newFav]
-          return {
-            ...state,
-            favRepos: newFavRepos,
-            listOfFavs: [...state.listOfFavs, state.repoId],
-            repoIsFav: true,
+          console.log('newFav : ', newFav);
+          // je vérifie que newFav n'est pas vide (si il est vide, je dois regarder dans les repos du user)
+          if (newFav.length === 0) {
+            const newFav = state.userRepos.filter(result => result.id === state.repoId);
+            const newFavRepos = [...state.favRepos, ...newFav];
+            return {
+              ...state,
+              favRepos: newFavRepos,
+              listOfFavs: [...state.listOfFavs, state.repoId],
+              repoIsFav: true,
+            }
+          } else {
+            // et je le rajoute à favRepos
+            const newFavRepos = [...state.favRepos, ...newFav]
+            return {
+              ...state,
+              favRepos: newFavRepos,
+              listOfFavs: [...state.listOfFavs, state.repoId],
+              repoIsFav: true,
+            }
           }
         }
       }
@@ -112,7 +121,6 @@ const reducer = (state = initialState, action = {}) => {
         return{
           ...state,
           isConnected: true,
-          message: action.message,
         }
       }
       case GET_USER: {
@@ -137,7 +145,6 @@ const reducer = (state = initialState, action = {}) => {
         //   user: {},
         //   userRepos: [],
         //   loading: false,
-        //   message: 'Utilisez votre token GitHub pour vous connecter',
         // }
         // Beaucoup + rapide et simple => 
         return initialState; 
@@ -171,7 +178,7 @@ export const findOneRepo = (url, name, id) => ({
   type: FIND_ONE_REPO,
   url,
   name,
-  id
+  id,
 })
 
 export const receiveResults = results => ({
@@ -196,9 +203,8 @@ export const getUser = () => ({
   type: GET_USER,
 })
 
-export const connectUser = message => ({
+export const connectUser = () => ({
   type: CONNECT,
-  message,
 })
 
 export const receiveUserInfos = (user, repos) => ({

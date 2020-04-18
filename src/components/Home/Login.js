@@ -21,7 +21,7 @@ const Login = ({clickOnConnect, userToken, onInputChange, message, loading}) => 
     }
     return (
         <div>
-            <p>{message}</p>
+            <p>Utilisez votre token GitHub pour vous connecter</p>
             <Form id="login-form"
             onSubmit={handleSubmit}
             loading={loading}>

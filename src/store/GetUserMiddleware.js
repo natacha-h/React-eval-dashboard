@@ -17,7 +17,7 @@ const GetUserMiddleware = store => next => (action) => {
             .then((response) => {
                 const userDatas = response.data;
                 // j'envoie un message comme quoi je suis connecté
-                store.dispatch(connectUser('Connecté. Récupération de vos infos en cours'))
+                store.dispatch(connectUser())
                 // je récuère mes repos
                 fetchOnGithub('https://api.github.com/user/repos')
                 .then((response) => {
