@@ -10,7 +10,7 @@ const initialState = {
   favRepos: [], // et ici je stocke une copie des repos favoris, déjà mis en forme
   repoIsFav: false,
   isConnected: false,
-  userToken: '1cde0240bba2cdf7d7b63f3b7da342405faa2399', // 6f8389e1a9793937c7c8a222b891168fb20dee82
+  userToken: '',
   user: {}, // stocke les infos du user
   userRepos: [], // stocke les repos du user
 };
