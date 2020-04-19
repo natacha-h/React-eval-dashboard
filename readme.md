@@ -1,4 +1,4 @@
-# Mise en pratisue React
+# Mise en pratique React
 
 ## Dashboard Github
 
